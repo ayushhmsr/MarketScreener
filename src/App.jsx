@@ -24,6 +24,7 @@ export default function App() {
   const [optionData, setOptionData] = useState(null)
   const [optionSym, setOptionSym]   = useState('NIFTY')
   const [selectedSym, setSelectedSym] = useState(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const prevPrices = useRef({})
 
   useEffect(() => { setSectors(computeSectors(stocks)) }, [])
@@ -100,7 +101,7 @@ export default function App() {
   return (
     <div style={{ fontFamily:"'JetBrains Mono','Fira Code',monospace", background:'#0d1117', color:'#e6edf3', height:'100vh', display:'flex', flexDirection:'column', overflow:'hidden' }}>
       {/* NAV */}
-      <nav style={{ background:'#161b22', borderBottom:'1px solid #21262d', padding:'0 14px', display:'flex', alignItems:'center', gap:14, height:46, flexShrink:0 }}>
+      <nav style={{ background:'#161b22', borderBottom:'1px solid #21262d', padding:'0 14px', display:'flex', alignItems:'center', gap:14, height:46, flexShrink:0, position:'relative' }}>
         <div style={{ display:'flex', alignItems:'center', gap:8 }}>
           <div style={{ width:26, height:26, background:'linear-gradient(135deg,#3b82f6,#7c3aed)', borderRadius:6, display:'flex', alignItems:'center', justifyContent:'center' }}>
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><polyline points="1,10 4,5 7,8 10,3 13,6" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -108,9 +109,12 @@ export default function App() {
           <span style={{ fontWeight:700, fontSize:13, letterSpacing:-0.4 }}>MarketPulse</span>
           <span style={{ fontSize:9, fontWeight:700, padding:'1px 5px', background:'rgba(124,58,237,0.2)', color:'#a78bfa', border:'1px solid rgba(124,58,237,0.3)', borderRadius:3 }}>PRO</span>
         </div>
-        <div style={{ display:'flex', gap:2 }}>
+        <button onClick={()=>setMobileOpen(v=>!v)} style={{ marginLeft:10, background:'transparent', border:'none', color:'#e6edf3', fontSize:18, cursor:'pointer' }}>
+          {mobileOpen ? '✖' : '☰'}
+        </button>
+        <div style={{ display: mobileOpen ? 'flex' : 'none', flexDirection:'column', position:'absolute', top:46, left:0, width:'100%', background:'#161b22', padding:10, gap:6 }}>
           {TABS.map(t => (
-            <button key={t} onClick={()=>setActiveTab(t)} style={{
+            <button key={t} onClick={()=>{setActiveTab(t); setMobileOpen(false)}} style={{
               padding:'4px 11px', borderRadius:5, border:'none', cursor:'pointer', fontSize:12, fontFamily:'inherit',
               background: activeTab===t ? 'rgba(255,255,255,0.08)' : 'transparent',
               color: activeTab===t ? '#e6edf3' : '#6b7280', transition:'all 0.12s'
