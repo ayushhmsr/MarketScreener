@@ -103,11 +103,13 @@ export default function App() {
       {/* NAV */}
       <nav style={{ background:'#161b22', borderBottom:'1px solid #21262d', padding:'0 14px', display:'flex', alignItems:'center', gap:14, height:46, flexShrink:0, position:'relative' }}>
         <div style={{ display:'flex', alignItems:'center', gap:8 }}>
-          <div style={{ width:26, height:26, background:'linear-gradient(135deg,#3b82f6,#7c3aed)', borderRadius:6, display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><polyline points="1,10 4,5 7,8 10,3 13,6" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <div style={{ width:28, height:28, background:'linear-gradient(135deg,#00f5a0,#00d9f5)', borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 0 10px rgba(0,245,160,0.4)' }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M3 17L9 11L13 15L21 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
-          <span style={{ fontWeight:700, fontSize:13, letterSpacing:-0.4 }}>MarketPulse</span>
-          <span style={{ fontSize:9, fontWeight:700, padding:'1px 5px', background:'rgba(124,58,237,0.2)', color:'#a78bfa', border:'1px solid rgba(124,58,237,0.3)', borderRadius:3 }}>PRO</span>
+          <span style={{ fontWeight:700, fontSize:13, letterSpacing:-0.4 }}>Zentryx</span>
+          <span style={{ fontSize:9, fontWeight:700, padding:'1px 5px', background:'rgba(0,245,160,0.15)', color:'#00f5a0', border:'1px solid rgba(0,245,160,0.4)', borderRadius:3 }}>PRO</span>
         </div>
         <button onClick={()=>setMobileOpen(v=>!v)} style={{ marginLeft:10, background:'transparent', border:'none', color:'#e6edf3', fontSize:18, cursor:'pointer' }}>
           {mobileOpen ? '✖' : '☰'}
